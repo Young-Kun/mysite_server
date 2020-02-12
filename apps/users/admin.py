@@ -8,5 +8,5 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 
 @admin.register(VerifyCode)
-class UserProfileAdmin(admin.ModelAdmin):
+class VerifyCodeAdmin(admin.ModelAdmin):
     list_display = ['id', 'code', 'mobile', 'add_time']

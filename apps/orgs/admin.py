@@ -3,10 +3,10 @@ from .models import School, Teacher
 
 
 @admin.register(School)
-class CourseAdmin(admin.ModelAdmin):
+class SchoolAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'introduction', 'add_time']
 
 
 @admin.register(Teacher)
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'school', 'name', 'features', 'add_time']
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'school', 'features', 'add_time']
