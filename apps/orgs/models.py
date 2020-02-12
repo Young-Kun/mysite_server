@@ -3,6 +3,9 @@ from django.utils import timezone
 
 
 class School(models.Model):
+    """
+    学校
+    """
     name = models.CharField(max_length=50, verbose_name='学校名字')
     cover = models.ImageField(upload_to='orgs/schools/covers/', default='', max_length=255, verbose_name='学校封面')
     introduction = models.CharField(max_length=255, default='这个学校没有简介', verbose_name='学校简介')
@@ -20,6 +23,9 @@ class School(models.Model):
 
 
 class Teacher(models.Model):
+    """
+    教师
+    """
     school = models.ForeignKey(School, null=True, blank=True, on_delete=models.SET_NULL, verbose_name='签约学校')
     name = models.CharField(max_length=25, verbose_name='教师名字')
     avatar = models.ImageField(upload_to='orgs/teachers/avatars/', default='', max_length=255, verbose_name='教师头像')
