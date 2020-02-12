@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class School(models.Model):
@@ -9,7 +10,7 @@ class School(models.Model):
     name = models.CharField(max_length=50, verbose_name='学校名字')
     cover = models.ImageField(upload_to='orgs/schools/covers/', default='', max_length=255, verbose_name='学校封面')
     introduction = models.CharField(max_length=255, default='这个学校没有简介', verbose_name='学校简介')
-    description = models.TextField(default='这个学校没有详情介绍', verbose_name='学校详情')
+    description = RichTextUploadingField(default='这个学校没有详情介绍', verbose_name='学校详情')
     click_num = models.IntegerField(default=0, verbose_name='点击量')
     favor_num = models.IntegerField(default=0, verbose_name='收藏量')
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 from orgs.models import School, Teacher
 
@@ -16,7 +17,7 @@ class CourseCategory(models.Model):
     name = models.CharField(max_length=30, help_text='类别名称', verbose_name='类别名称')
     code = models.CharField(max_length=30, help_text='类别代码', verbose_name='类别代码')
     category_type = models.IntegerField(choices=CATEGORY_TYPE, help_text='类目级别', verbose_name='类目级别')
-    parent = models.ForeignKey('self', null=True, blank=True, ralated_name='children', on_delete=models.CASCADE,
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE,
                                help_text='父级类目', verbose_name='父级类目')
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')
 
@@ -47,7 +48,7 @@ class Course(models.Model):
     title = models.CharField(max_length=125, verbose_name='课程名称')
     degree = models.CharField(choices=DEGREE, max_length=2, verbose_name='课程难度')
     introduction = models.CharField(max_length=255, default='这个课程没有简介', verbose_name='课程简介')
-    description = models.TextField(verbose_name='课程描述')
+    description = RichTextUploadingField(verbose_name='课程描述')
     cover = models.ImageField(upload_to='courses/courses/covers/', max_length=255, null=True, blank=True,
                               verbose_name='课程封面')
     recommend = models.CharField(choices=RECOMMEND, max_length=3, verbose_name='推荐')

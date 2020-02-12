@@ -39,6 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
+    'users',
+    'blogs',
+    'courses',
+    'operates',
+    'orgs'
 ]
 
 MIDDLEWARE = [
@@ -63,6 +70,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -120,8 +128,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'all_static_files')
 
+# 媒体文件
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 用户模型
 AUTH_USER_MODEL = 'users.UserProfile'
+
+# ckeditor配置项
+CKEDITOR_UPLOAD_PATH = "image_upload/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'language': 'zh-cn'
+    }
+}
