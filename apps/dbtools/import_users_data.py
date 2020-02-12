@@ -8,6 +8,8 @@ pwd = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(pwd + '../')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
 django.setup()
+# 导入模型，注意，要在环境配置之后再导入
+from users.models import UserProfile
 
 # 用户数据
 users_data = [
@@ -45,9 +47,6 @@ users_data = [
         'is_active': True
     },
 ]
-
-# 导入模型，注意，要在环境配置之后再导入
-from users.models import UserProfile
 
 for item in users_data:
     if not UserProfile.objects.filter(username=item['username']).exists():
