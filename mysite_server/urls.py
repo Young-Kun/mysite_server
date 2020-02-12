@@ -20,6 +20,6 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('media/<path>', serve, {'document_root': MEDIA_ROOT}),
+    path('media/<path:path>', serve, {'document_root': MEDIA_ROOT}),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]

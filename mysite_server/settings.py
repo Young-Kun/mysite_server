@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
-    'users',
-    'blogs',
-    'courses',
-    'operates',
-    'orgs'
+    'users.apps.UsersConfig',
+    'blogs.apps.BlogsConfig',
+    'courses.apps.CoursesConfig',
+    'operates.apps.OperatesConfig',
+    'orgs.apps.OrgsConfig',
 ]
 
 MIDDLEWARE = [
