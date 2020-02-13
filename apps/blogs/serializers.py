@@ -19,3 +19,4 @@ class ArticleSerializer(HyperlinkedModelSerializer):
         model = Article
         fields = ['url', 'id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'content', 'click_num',
                   'favor_num', 'comment_num', 'add_time']
+        depth = 1
