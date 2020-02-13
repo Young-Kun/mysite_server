@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from ckeditor_uploader.fields import RichTextUploadingField
 
 from orgs.models import School, Teacher
 
@@ -48,7 +47,7 @@ class Course(models.Model):
     title = models.CharField(max_length=125, verbose_name='课程名称')
     degree = models.CharField(choices=DEGREE, max_length=2, verbose_name='课程难度')
     introduction = models.CharField(max_length=255, default='这个课程没有简介', verbose_name='课程简介')
-    description = RichTextUploadingField(verbose_name='课程描述')
+    description = models.TextField(verbose_name='课程描述')
     cover = models.ImageField(upload_to='courses/courses/covers/', max_length=255, null=True, blank=True,
                               verbose_name='课程封面')
     recommend = models.CharField(choices=RECOMMEND, max_length=3, verbose_name='推荐')

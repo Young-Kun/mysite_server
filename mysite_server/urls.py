@@ -17,9 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.static import serve
 from .settings import MEDIA_ROOT
+from rest_framework.routers import DefaultRouter
+# 导入视图
+from blogs.views import BlogCategoryViewSet, BlogTagViewSet, ArticleViewSet
+
+router = DefaultRouter()
+router.register(r'blogcategries', BlogCategoryViewSet)
+router.register(r'blogtags', BlogTagViewSet)
+router.register(r'articles', ArticleViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('media/<path:path>', serve, {'document_root': MEDIA_ROOT}),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', include(router.urls)),
 ]

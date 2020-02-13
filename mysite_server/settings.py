@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
-    'ckeditor_uploader',
+    'rest_framework',
     'users.apps.UsersConfig',
     'blogs.apps.BlogsConfig',
     'courses.apps.CoursesConfig',
@@ -144,3 +143,11 @@ CKEDITOR_CONFIGS = {
         'language': 'zh-cn'
     }
 }
+
+# rest_framework配置项
+REST_FRAMEWORK = {
+    # 分页器
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5,
+}
+
