@@ -17,6 +17,7 @@ class UserProfile(AbstractUser):
     class Meta:
         verbose_name = '用户'
         verbose_name_plural = '用户'
+        ordering = ['-date_joined']
 
     def __str__(self):
         return self.username

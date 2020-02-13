@@ -6,7 +6,7 @@ import django
 
 # django环境配置
 pwd = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(pwd + '../')
+sys.path.append(pwd)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
 django.setup()
 # 导入模型，注意，要在环境配置之后再导入
@@ -14,7 +14,7 @@ from blogs.models import BlogCategory, BlogTag, Article
 from django.contrib.auth import get_user_model
 
 # 标签数据
-tags_data = ['python', 'java', 'nodejs', 'html', 'css', 'c++']
+tags_data = ['python', 'java', 'nodejs', 'html', 'css', 'c++', 'nginx']
 # 类别数据
 categories_data = ['Web开发', '人工智能', '财税金融', '动物世界', '道德观察']
 # 文章

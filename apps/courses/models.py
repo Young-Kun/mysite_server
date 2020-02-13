@@ -23,6 +23,7 @@ class CourseCategory(models.Model):
     class Meta:
         verbose_name = '课程类别'
         verbose_name_plural = '课程类别'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.name
@@ -59,6 +60,7 @@ class Course(models.Model):
     class Meta:
         verbose_name = '课程'
         verbose_name_plural = '课程'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.title

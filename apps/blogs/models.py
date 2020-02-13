@@ -13,6 +13,7 @@ class BlogCategory(models.Model):
     class Meta:
         verbose_name = '类别'
         verbose_name_plural = '类别'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.name
@@ -28,6 +29,7 @@ class BlogTag(models.Model):
     class Meta:
         verbose_name = '标签'
         verbose_name_plural = '标签'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.name
@@ -49,6 +51,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = '文章'
         verbose_name_plural = '文章'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.title

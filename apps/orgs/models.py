@@ -17,6 +17,7 @@ class School(models.Model):
     class Meta:
         verbose_name = '学校'
         verbose_name_plural = '学校'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.name
@@ -35,6 +36,7 @@ class Teacher(models.Model):
     class Meta:
         verbose_name = '教师'
         verbose_name_plural = '教师'
+        ordering = ['-add_time']
 
     def __str__(self):
         return self.name

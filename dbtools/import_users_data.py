@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password
 
 # django环境配置
 pwd = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(pwd + '../')
+sys.path.append(pwd)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
 django.setup()
 # 导入模型，注意，要在环境配置之后再导入
@@ -42,6 +42,14 @@ users_data = [
         'username': 'wangwu',
         'nickname': '王五',
         'avatar': 'users/avatars/3.jpg',
+        'is_superuser': False,
+        'is_staff': False,
+        'is_active': True
+    },
+{
+        'username': 'zhaoliu',
+        'nickname': '赵六',
+        'avatar': 'users/avatars/4.jpg',
         'is_superuser': False,
         'is_staff': False,
         'is_active': True
