@@ -21,6 +21,7 @@ from rest_framework.routers import DefaultRouter
 # 引入视图
 from blogs.views import BlogCategoryViewSet, BlogTagViewSet, ArticleViewSet
 from courses.views import CourseCategoryViewSet, CourseViewSet
+from orgs.views import SchoolViewSet, TeacherViewSet
 
 # 注册视图
 router = DefaultRouter()
@@ -29,9 +30,12 @@ router.register(r'blog-tags', BlogTagViewSet)
 router.register(r'articles', ArticleViewSet)
 router.register(r'course-categories', CourseCategoryViewSet)
 router.register(r'courses', CourseViewSet)
+router.register(r'schools', SchoolViewSet)
+router.register(r'teachers', TeacherViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('media/<path:path>', serve, {'document_root': MEDIA_ROOT}),
+    path('', include('rest_framework.urls')),
     path('', include(router.urls)),
 ]
