@@ -22,6 +22,7 @@ from rest_framework.routers import DefaultRouter
 from blogs.views import BlogCategoryViewSet, BlogTagViewSet, ArticleViewSet
 from courses.views import CourseCategoryViewSet, CourseViewSet
 from orgs.views import SchoolViewSet, TeacherViewSet
+from users.views import UserProfileViewSet, VerifyCodeViewSet
 
 # 注册视图
 router = DefaultRouter()
@@ -32,6 +33,8 @@ router.register(r'course-categories', CourseCategoryViewSet)
 router.register(r'courses', CourseViewSet)
 router.register(r'schools', SchoolViewSet)
 router.register(r'teachers', TeacherViewSet)
+router.register(r'user-profiles', UserProfileViewSet)
+router.register(r'verify-codes', VerifyCodeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
