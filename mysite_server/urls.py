@@ -18,13 +18,17 @@ from django.urls import path, include
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 from rest_framework.routers import DefaultRouter
-# 导入视图
+# 引入视图
 from blogs.views import BlogCategoryViewSet, BlogTagViewSet, ArticleViewSet
+from courses.views import CourseCategoryViewSet, CourseViewSet
 
+# 注册视图
 router = DefaultRouter()
 router.register(r'blogcategries', BlogCategoryViewSet)
 router.register(r'blogtags', BlogTagViewSet)
 router.register(r'articles', ArticleViewSet)
+router.register(r'coursecategories', CourseCategoryViewSet)
+router.register(r'courses', CourseViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
