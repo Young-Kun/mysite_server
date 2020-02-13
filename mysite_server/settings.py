@@ -28,7 +28,7 @@ SECRET_KEY = 'i1odf*&f6ka5fhj6v9xy7fzn&m*i3e)o)e+p61dsr0$&k0&ki5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] if DEBUG else ['youngkun.site']
 
 # Application definition
 
@@ -156,9 +156,6 @@ CKEDITOR_CONFIGS = {
 
 # rest_framework配置项
 REST_FRAMEWORK = {
-    # 分页器
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 5,
     # 权限
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',

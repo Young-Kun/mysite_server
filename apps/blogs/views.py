@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from .models import BlogCategory, BlogTag, Article
 from .serializers import BlogCategorySerializer, BlogTagSerializer, ArticleSerializer
+from pagination import MyLimitOffsetPagination
 
 
 class BlogCategoryViewSet(ModelViewSet):
@@ -11,6 +12,7 @@ class BlogCategoryViewSet(ModelViewSet):
 class BlogTagViewSet(ModelViewSet):
     queryset = BlogTag.objects.all()
     serializer_class = BlogTagSerializer
+    pagination_class = MyLimitOffsetPagination
 
 
 class ArticleViewSet(ModelViewSet):
