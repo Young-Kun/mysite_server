@@ -26,9 +26,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = 'i1odf*&f6ka5fhj6v9xy7fzn&m*i3e)o)e+p61dsr0$&k0&ki5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['youngkun.site']
 
 # Application definition
 
