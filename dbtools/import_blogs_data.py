@@ -22,6 +22,21 @@ articles = {
     'python爬虫实践': 'Python爬虫是最流行的',
     'django开发实战': 'Django是一个开放源代码的Web应用框架，由Python写成',
     '马是怎么睡觉的': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章1': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章2': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章3': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章4': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章5': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章6': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章7': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章8': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章9': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章10': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章11': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章12': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章13': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章14': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
+    '文章15': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
 }
 
 for tag_name in tags_data:
@@ -49,6 +64,10 @@ for title in articles:
         article.category = choice(BlogCategory.objects.all())
         article.user = choice(get_user_model().objects.all())
         article.cover = 'blogs/articles/covers/' + str(randint(0, 5)) + '.jpg'
+        article.save()
+        article.tags.add(choice(BlogTag.objects.all()))
+        article.tags.add(choice(BlogTag.objects.all()))
+        article.tags.add(choice(BlogTag.objects.all()))
         article.save()
         print(article.id, '--', article.title)
     else:
