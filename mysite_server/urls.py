@@ -24,10 +24,10 @@ from courses.views import CourseCategoryViewSet, CourseViewSet
 
 # 注册视图
 router = DefaultRouter()
-router.register(r'blogcategries', BlogCategoryViewSet)
-router.register(r'blogtags', BlogTagViewSet)
+router.register(r'blog-categories', BlogCategoryViewSet)
+router.register(r'blog-tags', BlogTagViewSet)
 router.register(r'articles', ArticleViewSet)
-router.register(r'coursecategories', CourseCategoryViewSet)
+router.register(r'course-categories', CourseCategoryViewSet)
 router.register(r'courses', CourseViewSet)
 
 urlpatterns = [
