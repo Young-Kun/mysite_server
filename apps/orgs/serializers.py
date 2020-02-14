@@ -1,14 +1,14 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework.serializers import ModelSerializer
 from .models import School, Teacher
 
 
-class SchoolSerializer(HyperlinkedModelSerializer):
+class SchoolSerializer(ModelSerializer):
     class Meta:
         model = School
-        fields = ['url', 'id', 'name', 'cover', 'introduction', 'description', 'click_num', 'favor_num', 'add_time']
+        fields = ['id', 'name', 'cover', 'introduction', 'description', 'click_num', 'favor_num', 'add_time']
 
 
-class TeacherSerializer(HyperlinkedModelSerializer):
+class TeacherSerializer(ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ['url', 'id', 'name', 'school', 'avatar', 'features', 'add_time']
+        fields = ['id', 'name', 'school', 'avatar', 'features', 'add_time']
