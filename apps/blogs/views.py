@@ -1,7 +1,9 @@
 from rest_framework.viewsets import ModelViewSet
+from custom.pagination import BlogTagPagination, ArticlePagination
 from .models import BlogCategory, BlogTag, Article
 from .serializers import BlogCategorySerializer, BlogTagSerializer, ArticleSerializer
-from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
+
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class BlogCategoryViewSet(ModelViewSet):
@@ -12,10 +14,12 @@ class BlogCategoryViewSet(ModelViewSet):
 class BlogTagViewSet(ModelViewSet):
     queryset = BlogTag.objects.all()
     serializer_class = BlogTagSerializer
-    pagination_class = LimitOffsetPagination
+    pagination_class = BlogTagPagination
 
 
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    pagination_class = PageNumberPagination
+    pagination_class = ArticlePagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['category']

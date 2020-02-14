@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'django_filters',
     'rest_framework',
     'users.apps.UsersConfig',
     'blogs.apps.BlogsConfig',
@@ -156,8 +157,6 @@ CKEDITOR_CONFIGS = {
 
 # rest_framework配置项
 REST_FRAMEWORK = {
-    # 分页器
-    'PAGE_SIZE': 10,
     # 权限
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
