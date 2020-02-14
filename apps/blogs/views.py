@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from custom.paginations import BlogTagPagination, ArticlePagination
 from .models import BlogCategory, BlogTag, Article
-from .serializers import BlogCategorySerializer, BlogTagSerializer, ArticleSerializer
+from .serializers import BlogCategorySerializer, BlogTagSerializer, ArticleSimpleSerializer, ArticleDetailSerializer
 from rest_framework.filters import OrderingFilter
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -20,8 +20,15 @@ class BlogTagViewSet(ModelViewSet):
 
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
     pagination_class = ArticlePagination
+    # serializer_class = ArticleSimpleSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['category', 'tags']
-    ordering_fields = ['add_time', 'click_num', 'favor_num', 'comment_num', 'user']
+    ordering_fields = ['add_time', 'click_num', 'favor_num', 'comment_num', 'user', 'title']
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ArticleSimpleSerializer
+        if self.action == 'retrieve':
+            return ArticleDetailSerializer
+        return ArticleSimpleSerializer

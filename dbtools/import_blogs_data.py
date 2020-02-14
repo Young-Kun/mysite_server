@@ -56,19 +56,20 @@ for ctg_name in categories_data:
         print(ctg_name, '已存在！')
 
 for title in articles:
-    if not Article.objects.filter(title=title).exists():
-        article = Article(title=title, content=articles[title])
-        article.click_num = randint(10, 100)
-        article.favor_num = randint(10, 100)
-        article.comment_num = randint(10, 100)
-        article.category = choice(BlogCategory.objects.all())
-        article.user = choice(get_user_model().objects.all())
-        article.cover = 'blogs/articles/covers/' + str(randint(0, 5)) + '.jpg'
-        article.save()
-        article.tags.add(choice(BlogTag.objects.all()))
-        article.tags.add(choice(BlogTag.objects.all()))
-        article.tags.add(choice(BlogTag.objects.all()))
-        article.save()
-        print(article.id, '--', article.title)
+    if Article.objects.filter(title=title).exists():
+        article = Article.objects.filter(title=title).first()
+        article.content = articles[title]
     else:
-        print(title, '已存在！')
+        article = Article(title=title, content=articles[title])
+    article.click_num = randint(10, 100)
+    article.favor_num = randint(10, 100)
+    article.comment_num = randint(10, 100)
+    article.category = choice(BlogCategory.objects.all())
+    article.user = choice(get_user_model().objects.all())
+    article.cover = 'blogs/articles/covers/' + str(randint(0, 5)) + '.jpg'
+    article.save()
+    article.tags.add(choice(BlogTag.objects.all()))
+    article.tags.add(choice(BlogTag.objects.all()))
+    article.tags.add(choice(BlogTag.objects.all()))
+    article.save()
+    print(article.id, '--', article.title)

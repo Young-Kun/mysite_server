@@ -14,7 +14,15 @@ class BlogTagSerializer(ModelSerializer):
         fields = ['id', 'name', 'add_time']
 
 
-class ArticleSerializer(ModelSerializer):
+class ArticleSimpleSerializer(ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'click_num',
+                  'favor_num', 'comment_num', 'add_time']
+        depth = 1
+
+
+class ArticleDetailSerializer(ModelSerializer):
     class Meta:
         model = Article
         fields = ['id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'content', 'click_num',
