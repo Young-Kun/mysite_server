@@ -148,18 +148,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 用户模型
 AUTH_USER_MODEL = 'users.UserProfile'
 
-# ckeditor配置项
-CKEDITOR_UPLOAD_PATH = "image_upload/"
-CKEDITOR_CONFIGS = {
-    'default': {
-        'language': 'zh-cn'
-    }
-}
-
 # rest_framework配置项
 REST_FRAMEWORK = {
     # 权限
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.IsAdminUser',
     ],
 }

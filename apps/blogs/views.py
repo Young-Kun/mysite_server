@@ -21,7 +21,6 @@ class BlogTagViewSet(ModelViewSet):
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
     pagination_class = ArticlePagination
-    # serializer_class = ArticleSimpleSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['category', 'tags']
     ordering_fields = ['add_time', 'modify_time', 'click_num', 'favor_num', 'comment_num', 'user', 'title']
