@@ -29,6 +29,17 @@ SECRET_KEY = 'i1odf*&f6ka5fhj6v9xy7fzn&m*i3e)o)e+p61dsr0$&k0&ki5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 邮箱配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+# EMAIL_USE_SSL = True
+EMAIL_USE_TSL = False
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'youngkunsite@163.com'
+EMAIL_HOST_PASSWORD = ''
+
+
+
 ALLOWED_HOSTS = ['*'] if DEBUG else ['youngkun.site']
 
 # Application definition
