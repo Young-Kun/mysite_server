@@ -159,3 +159,6 @@ REST_FRAMEWORK = {
     #     'rest_framework.permissions.IsAdminUser',
     # ],
 }
+
+# 认证引擎，支持用户名、邮箱、手机号认证
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'custom.authenticate.AuthenticateBackend']
