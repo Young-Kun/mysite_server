@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.static import serve
+from rest_framework_jwt.views import obtain_jwt_token
+
 from .settings import MEDIA_ROOT
 from rest_framework.routers import DefaultRouter
-from rest_framework.authtoken.views import obtain_auth_token
 # 引入视图
 from blogs.views import BlogCategoryViewSet, BlogTagViewSet, ArticleViewSet
 from courses.views import CourseCategoryViewSet, CourseViewSet
@@ -46,6 +47,6 @@ urlpatterns = [
     path('', include('rest_framework.urls')),
     # api路由
     path('', include(router.urls)),
-    # Token
-    path('token/', obtain_auth_token),
+    # JWT 认证
+    path('jwt-token-auth/', obtain_jwt_token),
 ]
