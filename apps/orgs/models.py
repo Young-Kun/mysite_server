@@ -11,7 +11,7 @@ class School(models.Model):
     description = models.TextField(default='这个学校没有详情介绍', verbose_name='学校详情')
     click_num = models.IntegerField(default=0, verbose_name='点击量')
     favor_num = models.IntegerField(default=0, verbose_name='收藏量')
-    add_time = models.DateTimeField(auto_now=True, verbose_name='创建时间')
+    add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
         verbose_name = '学校'
@@ -30,7 +30,7 @@ class Teacher(models.Model):
     name = models.CharField(max_length=25, verbose_name='教师名字')
     avatar = models.ImageField(upload_to='orgs/teachers/avatars/', default='', max_length=255, verbose_name='教师头像')
     features = models.CharField(max_length=255, default='诙谐幽默，严谨求实', verbose_name='教学特色')
-    add_time = models.DateTimeField(auto_now=True, verbose_name='创建时间')
+    add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
         verbose_name = '教师'

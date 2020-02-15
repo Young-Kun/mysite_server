@@ -14,4 +14,4 @@ class BlogTagAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category', 'user', 'click_num', 'add_time']
+    list_display = ['id', 'title', 'category', 'user', 'click_num', 'add_time', 'modify_time']

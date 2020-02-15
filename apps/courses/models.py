@@ -16,7 +16,7 @@ class CourseCategory(models.Model):
     category_type = models.IntegerField(choices=CATEGORY_TYPE, help_text='类目级别', verbose_name='类目级别')
     parent = models.ForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE,
                                help_text='父级类目', verbose_name='父级类目')
-    add_time = models.DateTimeField(auto_now=True, verbose_name='创建时间')
+    add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
         verbose_name = '课程类别'
@@ -53,7 +53,7 @@ class Course(models.Model):
     click_num = models.IntegerField(default=0, verbose_name='点击量')
     favor_num = models.IntegerField(default=0, verbose_name='收藏')
     comment_num = models.IntegerField(default=0, verbose_name='评论量')
-    add_time = models.DateTimeField(auto_now=True, verbose_name='创建时间')
+    add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
         verbose_name = '课程'
