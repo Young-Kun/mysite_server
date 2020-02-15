@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import sys
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -158,6 +159,12 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAdminUser',
     # ],
+}
+
+# JWT配置
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
 }
 
 # 认证引擎，支持用户名、邮箱、手机号认证
