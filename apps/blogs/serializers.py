@@ -18,7 +18,7 @@ class ArticleSimpleSerializer(ModelSerializer):
     class Meta:
         model = Article
         fields = ['id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'click_num',
-                  'favor_num', 'comment_num', 'add_time']
+                  'favor_num', 'comment_num', 'add_time', 'modify_time']
         depth = 1
 
 
@@ -26,5 +26,5 @@ class ArticleDetailSerializer(ModelSerializer):
     class Meta:
         model = Article
         fields = ['id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'content', 'click_num',
-                  'favor_num', 'comment_num', 'add_time']
+                  'favor_num', 'comment_num', 'add_time', 'modify_time']
         depth = 1
