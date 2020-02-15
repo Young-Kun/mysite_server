@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 import datetime
+import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +25,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'i1odf*&f6ka5fhj6v9xy7fzn&m*i3e)o)e+p61dsr0$&k0&ki5'
+SECRET_KEY = secrets.key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,9 +37,8 @@ EMAIL_HOST = 'smtp.163.com'
 EMAIL_USE_TSL = False
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'youngkunsite@163.com'
-EMAIL_HOST_PASSWORD = ''
-
-
+EMAIL_HOST_PASSWORD = secrets.password
+DEFAULT_FROM_EMAIL = 'youngkunsite@163.com'
 
 ALLOWED_HOSTS = ['*'] if DEBUG else ['youngkun.site']
 
