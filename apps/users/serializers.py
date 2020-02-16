@@ -7,7 +7,8 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, MAX_ACCOUNT_LENGTH
+from custom.utils import generate_code, send_verify_code_by_email
+from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, MAX_ACCOUNT_LENGTH, CODE_LENGTH
 from .models import UserProfile, VerifyCode, ACCOUNT_TYPE
 
 User = get_user_model()
@@ -39,6 +40,16 @@ class VerifyCodeSerializer(ModelSerializer):
         else:
             if not re.match(REGEX_EMAIL, account):
                 raise serializers.ValidationError('邮箱格式错误')
+        # 生成验证码并加入validated_data
+        verify_code = generate_code(CODE_LENGTH)
+        if account_type == 'mobile':
+            pass
+        else:
+            send_status = send_verify_code_by_email(verify_code, [account, ])
+            if send_status:
+                attrs['code'] = verify_code
+            else:
+                raise serializers.ValidationError('验证码发送失败')
         return attrs
 
 
