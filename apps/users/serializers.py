@@ -43,7 +43,7 @@ class VerifyCodeSerializer(ModelSerializer):
         # 生成验证码并加入validated_data
         verify_code = generate_code(CODE_LENGTH)
         if account_type == 'mobile':
-            pass
+            raise serializers.ValidationError('手机发短信要收费，暂不支持')
         else:
             send_status = send_verify_code_by_email(verify_code, [account, ])
             if send_status:
