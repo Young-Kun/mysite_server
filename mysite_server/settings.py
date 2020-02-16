@@ -30,21 +30,21 @@ SECRET_KEY = selfconfig.key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# 测试邮箱配置
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = 'youngkunsite@163.com'
-
-# # 邮箱配置
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.163.com'
-# # EMAIL_USE_SSL = True
-# EMAIL_USE_TSL = False
-# EMAIL_PORT = 25
+# # 测试邮箱配置
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
 # EMAIL_HOST_USER = 'youngkunsite@163.com'
-# EMAIL_HOST_PASSWORD = selfconfig.password
-# DEFAULT_FROM_EMAIL = 'youngkunsite@163.com'
+
+# 邮箱配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+# EMAIL_USE_SSL = True
+EMAIL_USE_TSL = False
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'youngkunsite@163.com'
+EMAIL_HOST_PASSWORD = selfconfig.password
+DEFAULT_FROM_EMAIL = 'youngkunsite@163.com'
 
 ALLOWED_HOSTS = ['*'] if DEBUG else ['youngkun.site']
 
@@ -192,4 +192,4 @@ REGEX_MOBILE = r'^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$'
 REGEX_EMAIL = r'^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$'
 CODE_LENGTH = 4
 MAX_ACCOUNT_LENGTH = 125
-CODE_EXPIRES = 60  # 验证码过期分钟数
+CODE_EXPIRES = 5  # 验证码过期分钟数
