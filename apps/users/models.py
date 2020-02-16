@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 
+ACCOUNT_TYPE = (
+    ('email', '邮箱'),
+    ('mobile', '手机'),
+)
+
 
 class UserProfile(AbstractUser):
     """
@@ -28,15 +33,16 @@ class UserProfile(AbstractUser):
 
 class VerifyCode(models.Model):
     """
-    短信验证码
+    短信或邮箱验证码
     """
     code = models.CharField(max_length=10, verbose_name='验证码')
-    mobile = models.CharField(max_length=11, verbose_name='手机号码')
+    account = models.CharField(max_length=125, default='', verbose_name='账号')
+    account_type = models.CharField(max_length=6, choices=ACCOUNT_TYPE, default='email', verbose_name='账号类型')
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
-        verbose_name = '短信验证码'
-        verbose_name_plural = '短信验证码'
+        verbose_name = '验证码'
+        verbose_name_plural = '验证码'
 
     def __str__(self):
         return self.code

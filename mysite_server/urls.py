@@ -21,22 +21,18 @@ from rest_framework_jwt.views import obtain_jwt_token
 from .settings import MEDIA_ROOT
 from rest_framework.routers import DefaultRouter
 # 引入视图
-from blogs.views import BlogCategoryViewSet, BlogTagViewSet, ArticleViewSet
-from courses.views import CourseCategoryViewSet, CourseViewSet
-from orgs.views import SchoolViewSet, TeacherViewSet
-from users.views import UserProfileViewSet, VerifyCodeViewSet
+from blogs import views as blog_views
+from users import views as user_views
 
 # 注册视图
+# blogs.urls
 router = DefaultRouter()
-router.register(r'blog-categories', BlogCategoryViewSet)
-router.register(r'blog-tags', BlogTagViewSet)
-router.register(r'articles', ArticleViewSet)
-router.register(r'course-categories', CourseCategoryViewSet)
-router.register(r'courses', CourseViewSet)
-router.register(r'schools', SchoolViewSet)
-router.register(r'teachers', TeacherViewSet)
-router.register(r'user-profiles', UserProfileViewSet)
-router.register(r'verify-codes', VerifyCodeViewSet)
+router.register(r'blog-categories', blog_views.BlogCategoryViewSet)
+router.register(r'blog-tags', blog_views.BlogTagViewSet)
+router.register(r'articles', blog_views.ArticleViewSet)
+# users.urls
+router.register(r'user-profiles', user_views.UserProfileViewSet)
+router.register(r'verify-codes', user_views.VerifyCodeViewSet)
 
 urlpatterns = [
     # 后台系统
