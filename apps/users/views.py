@@ -30,7 +30,9 @@ class VerifyCodeViewSet(mixins.CreateModelMixin, GenericViewSet):
         if account_type == 'email':
             send_status = send_verify_code_by_email(verify_code, [account, ])
             if send_status:
-                self.perform_create(serializer)
+                # self.perform_create(serializer)
+                vcode = VerifyCode(code=verify_code, account=account, account_type=account_type)
+                vcode.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
             else:
                 return Response('验证码发送失败', status=status.HTTP_400_BAD_REQUEST, headers=headers)
