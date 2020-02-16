@@ -46,8 +46,8 @@ class UserRegisterSerializer(ModelSerializer):
     """
     用户注册
     """
-    account_type = serializers.ChoiceField(required=True, choices=ACCOUNT_TYPE, label='账号类型')
-    account = serializers.CharField(required=True, max_length=MAX_ACCOUNT_LENGTH, label='账号')
+    account_type = serializers.ChoiceField(required=True, write_only=True, choices=ACCOUNT_TYPE, label='账号类型')
+    account = serializers.CharField(required=True, write_only=True, max_length=MAX_ACCOUNT_LENGTH, label='账号')
     code = serializers.CharField(required=True, write_only=True, label='验证码')
 
     class Meta:
