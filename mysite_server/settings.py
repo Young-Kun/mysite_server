@@ -190,3 +190,4 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'custom.
 # 验证规则
 REGEX_MOBILE = r'^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$'
 REGEX_EMAIL = r'^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$'
+CODE_LENGTH = 4

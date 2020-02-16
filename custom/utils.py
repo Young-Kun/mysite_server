@@ -29,18 +29,18 @@ def send_verify_code_by_email(verify_code, to_emails):
     return status
 
 
-if __name__ == '__main__':
-    import os
-    import sys
-    import django
-
-    # django环境配置
-    pwd = os.path.dirname(os.path.realpath(__file__))
-    sys.path.append(pwd)
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
-    django.setup()
-
-    verify_code = generate_code(4)
-    to_emails = ['youngkunzhu@163.com']
-    status = send_verify_code_by_email(verify_code, to_emails)
-    print(status)
+# if __name__ == '__main__':
+#     import os
+#     import sys
+#     import django
+#
+#     # django环境配置
+#     pwd = os.path.dirname(os.path.realpath(__file__))
+#     sys.path.append(pwd)
+#     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
+#     django.setup()
+#
+#     verify_code = generate_code(4)
+#     to_emails = ['youngkunzhu@163.com']
+#     status = send_verify_code_by_email(verify_code, to_emails)
+#     print(status)
