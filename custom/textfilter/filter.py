@@ -123,18 +123,10 @@ class DFAFilter:
             else:
                 ret.append(message[start])
             start += 1
-
-        return ''.join(ret)
-
-
-def test_first_character():
-    gfw = DFAFilter()
-    gfw.add("1989年")
-    assert gfw.filter("1989", "*") == "1989"
+        return '*' in ret, ''.join(ret)
 
 
 if __name__ == "__main__":
-    # gfw = NaiveFilter()
     # gfw = BSFilter()
     gfw = DFAFilter()
     gfw.parse("keywords")
@@ -143,5 +135,3 @@ if __name__ == "__main__":
     t = time.time()
     print(gfw.filter("法轮功 我操操操 费啊 神鼎飞丹砂 方式大幅度发的 辅导费的 是大幅度 色情 算法 分 SB", "*"))
     print(time.time() - t)
-
-    test_first_character()
