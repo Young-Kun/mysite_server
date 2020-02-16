@@ -38,3 +38,9 @@ class VerifyCodeSerializer(ModelSerializer):
     class Meta:
         model = VerifyCode
         fields = ['account', 'account_type']
+
+
+class UserRegisterSerializer(ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ['username', 'email', 'mobile']
