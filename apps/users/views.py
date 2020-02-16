@@ -12,7 +12,6 @@ class VerifyCodeViewSet(mixins.CreateModelMixin, GenericViewSet):
     """
     短信或邮箱验证码
     """
-    queryset = VerifyCode.objects.all()
     serializer_class = VerifyCodeSerializer
 
     def create(self, request, *args, **kwargs):
@@ -40,7 +39,6 @@ class UserRegisterViewSet(mixins.CreateModelMixin, GenericViewSet):
     """
     用户注册
     """
-    queryset = UserProfile.objects.all()
     serializer_class = UserRegisterSerializer
 
 

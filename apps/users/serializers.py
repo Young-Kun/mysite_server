@@ -5,7 +5,7 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL
+from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, CODE_LENGTH
 from .models import UserProfile, VerifyCode
 
 User = get_user_model()
@@ -41,6 +41,12 @@ class VerifyCodeSerializer(ModelSerializer):
 
 
 class UserRegisterSerializer(ModelSerializer):
+    """
+    用户注册
+    """
+    code = serializers.CharField(required=True, write_only=True, max_length=CODE_LENGTH, min_length=CODE_LENGTH,
+                                 label='验证码', error_messages={'blank': '请输入验证码', 'required': '验证码是必填项'})
+
     class Meta:
         model = UserProfile
-        fields = ['username', 'email', 'mobile']
+        fields = ['username', 'password', 'email', 'mobile', 'code']

@@ -31,8 +31,8 @@ router.register(r'blog-categories', blog_views.BlogCategoryViewSet)
 router.register(r'blog-tags', blog_views.BlogTagViewSet)
 router.register(r'articles', blog_views.ArticleViewSet)
 # users.urls
-router.register(r'user-register', user_views.UserRegisterViewSet)
-router.register(r'verify-codes', user_views.VerifyCodeViewSet)
+router.register(r'register', user_views.UserRegisterViewSet, basename='register')
+router.register(r'verify-codes', user_views.VerifyCodeViewSet, basename='verifycode')
 
 urlpatterns = [
     # 后台系统
