@@ -35,5 +35,5 @@ class VerifyCodeViewSet(mixins.CreateModelMixin, GenericViewSet):
             else:
                 return Response('验证码发送失败', status=status.HTTP_400_BAD_REQUEST, headers=headers)
         if account_type == 'mobile':
-            return 0
+            return Response(0)
         return Response('账号必须是手机或邮箱！', status=status.HTTP_400_BAD_REQUEST, headers=headers)
