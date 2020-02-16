@@ -2,11 +2,12 @@ import re
 from datetime import datetime, timedelta
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, CODE_LENGTH, MAX_ACCOUNT_LENGTH
+from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, MAX_ACCOUNT_LENGTH
 from .models import UserProfile, VerifyCode, ACCOUNT_TYPE
 
 User = get_user_model()
@@ -47,8 +48,7 @@ class UserRegisterSerializer(ModelSerializer):
     """
     account_type = serializers.ChoiceField(required=True, choices=ACCOUNT_TYPE, label='账号类型')
     account = serializers.CharField(required=True, max_length=MAX_ACCOUNT_LENGTH, label='账号')
-    code = serializers.CharField(required=True, write_only=True, max_length=CODE_LENGTH, min_length=CODE_LENGTH,
-                                 label='验证码')
+    code = serializers.CharField(required=True, write_only=True, label='验证码')
 
     class Meta:
         model = UserProfile
@@ -65,4 +65,20 @@ class UserRegisterSerializer(ModelSerializer):
                 raise serializers.ValidationError('验证码错误')
             if five_minutes_ago > newest_code.add_time:
                 raise serializers.ValidationError('验证码已过期，请重新发送')
-        raise serializers.ValidationError('验证码不存在，请先发送验证码')
+            # 验证通过
+            return 1
+        else:
+            raise serializers.ValidationError('验证码不存在，请先发送验证码')
+
+    def validate(self, attrs):
+        account_type = attrs['account_type']
+        if account_type == 'email':
+            attrs['email'] = attrs['account']
+        if account_type == 'mobile':
+            attrs['mobile'] = attrs['account']
+        attrs['nickname'] = attrs['username']
+        del attrs['code']
+        del attrs['account_type']
+        del attrs['account']
+        attrs['password'] = make_password(attrs['password'])
+        return attrs
