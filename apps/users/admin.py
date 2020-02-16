@@ -4,7 +4,7 @@ from .models import UserProfile, VerifyCode
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['id', 'username', 'nickname', 'mobile', 'is_staff', 'is_active']
+    list_display = ['id', 'username', 'nickname', 'email', 'mobile', 'is_staff', 'is_active']
 
 
 @admin.register(VerifyCode)

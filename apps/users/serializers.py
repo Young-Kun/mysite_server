@@ -8,7 +8,7 @@ from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from custom.utils import generate_code, send_verify_code_by_email
-from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, MAX_ACCOUNT_LENGTH, CODE_LENGTH
+from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, MAX_ACCOUNT_LENGTH, CODE_LENGTH, CODE_EXPIRES
 from .models import UserProfile, VerifyCode, ACCOUNT_TYPE
 
 User = get_user_model()
@@ -71,7 +71,7 @@ class UserRegisterSerializer(ModelSerializer):
         codes = VerifyCode.objects.filter(account_type=account_type, account=account)
         if codes.exists():
             newest_code = codes.order_by('-add_time').first()
-            five_minutes_ago = datetime.now() - timedelta(hours=0, minutes=5, seconds=0)
+            five_minutes_ago = datetime.now() - timedelta(hours=0, minutes=CODE_EXPIRES, seconds=0)
             if newest_code.code != code:
                 raise serializers.ValidationError('验证码错误')
             if five_minutes_ago > newest_code.add_time:

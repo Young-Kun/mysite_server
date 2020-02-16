@@ -15,8 +15,8 @@ class UserProfile(AbstractUser):
     用户
     """
     nickname = models.CharField(max_length=20, null=True, blank=True, verbose_name='昵称')
-    mobile = models.CharField(max_length=11, null=True, blank=True, verbose_name='手机号码')
-    email = models.CharField(max_length=MAX_ACCOUNT_LENGTH, null=True, blank=True, verbose_name='邮箱')
+    mobile = models.CharField(max_length=11, null=True, blank=True, unique=True, verbose_name='手机号码')
+    email = models.CharField(max_length=MAX_ACCOUNT_LENGTH, null=True, blank=True, unique=True, verbose_name='邮箱')
     introduction = models.TextField(null=True, blank=True, default='该用户很懒，啥也没写...', verbose_name='简介')
     avatar = models.ImageField(upload_to='users/avatars/', null=True, blank=True, default='', verbose_name='头像')
     address = models.CharField(max_length=100, null=True, blank=True, default='', verbose_name='地址')
