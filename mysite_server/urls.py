@@ -31,7 +31,7 @@ router.register(r'blog-categories', blog_views.BlogCategoryViewSet)
 router.register(r'blog-tags', blog_views.BlogTagViewSet)
 router.register(r'articles', blog_views.ArticleViewSet)
 # users.urls
-router.register(r'user-profiles', user_views.UserProfileViewSet)
+router.register(r'user-register', user_views.UserRegisterViewSet)
 router.register(r'verify-codes', user_views.VerifyCodeViewSet)
 
 urlpatterns = [

@@ -8,11 +8,6 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-class UserProfileViewSet(ModelViewSet):
-    queryset = UserProfile.objects.all()
-    serializer_class = UserProfileSerializer
-
-
 class VerifyCodeViewSet(mixins.CreateModelMixin, GenericViewSet):
     """
     短信或邮箱验证码
@@ -39,3 +34,8 @@ class VerifyCodeViewSet(mixins.CreateModelMixin, GenericViewSet):
         if account_type == 'mobile':
             return Response(0)
         return Response('账号必须是手机或邮箱！', status=status.HTTP_400_BAD_REQUEST, headers=headers)
+
+
+class UserRegisterViewSet(mixins.CreateModelMixin, GenericViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
