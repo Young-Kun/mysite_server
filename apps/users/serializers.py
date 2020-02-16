@@ -7,6 +7,7 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
+from custom.textfilter.filter import DFAFilter, keyword_path
 from custom.utils import generate_code, send_verify_code_by_email
 from mysite_server.settings import REGEX_MOBILE, REGEX_EMAIL, MAX_ACCOUNT_LENGTH, CODE_LENGTH, CODE_EXPIRES
 from .models import UserProfile, VerifyCode, ACCOUNT_TYPE
@@ -80,6 +81,20 @@ class UserRegisterSerializer(ModelSerializer):
             return 1
         else:
             raise serializers.ValidationError('验证码不存在，请先发送验证码')
+
+    def validate_username(self, username):
+        tf = DFAFilter()
+        tf.parse(keyword_path)
+        filtered_username = tf.filter(username)
+        if '*' in filtered_username:
+            is_sensitive = True
+        else:
+            is_sensitive = False
+        print(is_sensitive, filtered_username)
+        if is_sensitive:
+            raise serializers.ValidationError('用户名含有敏感字符：' + filtered_username)
+        else:
+            return username
 
     def validate(self, attrs):
         account_type = attrs['account_type']

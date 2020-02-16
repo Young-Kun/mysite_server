@@ -1,7 +1,9 @@
 from collections import defaultdict
 import re
+import os
+from mysite_server.settings import BASE_DIR
 
-__all__ = ['BSFilter', 'DFAFilter']
+keyword_path = os.path.join(BASE_DIR, 'custom/textfilter/keywords')
 
 
 class BSFilter:
@@ -123,13 +125,16 @@ class DFAFilter:
             else:
                 ret.append(message[start])
             start += 1
-        return '*' in ret, ''.join(ret)
+        return ''.join(ret)
+
+    def get_text_filter(self):
+        return self.parse(keyword_path)
 
 
 if __name__ == "__main__":
     # gfw = BSFilter()
     gfw = DFAFilter()
-    gfw.parse("keywords")
+    gfw.parse(keyword_path)
     import time
 
     t = time.time()
