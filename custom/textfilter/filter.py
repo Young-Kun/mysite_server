@@ -138,5 +138,5 @@ if __name__ == "__main__":
     import time
 
     t = time.time()
-    print(gfw.filter("法轮功 我操操操 费啊 神鼎飞丹砂 方式大幅度发的 辅导费的 是大幅度 色情 算法 分 SB", "*"))
+    print(gfw.filter("dfagsagasdfgsadsafs", "*"))
     print(time.time() - t)
