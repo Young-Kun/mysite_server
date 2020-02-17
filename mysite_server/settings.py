@@ -43,7 +43,7 @@ EMAIL_HOST = 'smtp.qq.com'
 EMAIL_USE_TSL = False
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'youngkunsite@qq.com'
-EMAIL_HOST_PASSWORD = selfconfig.password
+EMAIL_HOST_PASSWORD = selfconfig.email_password
 DEFAULT_FROM_EMAIL = 'youngkunsite@qq.com'
 
 ALLOWED_HOSTS = ['*'] if DEBUG else ['youngkun.site']

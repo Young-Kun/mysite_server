@@ -16,7 +16,6 @@ users_data = [
     {
         'username': 'kun',
         'nickname': '管理员',
-        'email': 'youngkunzhu@163.com',
         'avatar': 'users/avatars/0.jpg',
         'is_superuser': True,
         'is_staff': True,

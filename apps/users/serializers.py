@@ -90,7 +90,7 @@ class UserRegisterSerializer(ModelSerializer):
             is_sensitive = True
         else:
             is_sensitive = False
-        print(is_sensitive, filtered_username)
+        # print(is_sensitive, filtered_username)
         if is_sensitive:
             raise serializers.ValidationError('用户名含有敏感字符：' + filtered_username)
         else:
