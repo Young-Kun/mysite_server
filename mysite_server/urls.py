@@ -29,7 +29,9 @@ from users import views as user_views
 router = DefaultRouter()
 router.register(r'blog-categories', blog_views.BlogCategoryViewSet)
 router.register(r'blog-tags', blog_views.BlogTagViewSet)
-router.register(r'articles', blog_views.ArticleViewSet)
+router.register(r'articles', blog_views.ArticleListViewSet)
+router.register(r'article/detail', blog_views.ArticleRetrieveViewSet)
+router.register(r'article/create', blog_views.ArticleCreateViewSet, basename='article-create')
 # users.urls
 router.register(r'register', user_views.UserRegisterViewSet, basename='register')
 router.register(r'verify-codes', user_views.VerifyCodeViewSet, basename='verifycode')
