@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import BlogCategory, BlogTag, Article
+from .models import BlogCategory, BlogTag, BlogArticle
 from rest_framework import serializers
 
 
@@ -15,25 +15,25 @@ class BlogTagSerializer(ModelSerializer):
         fields = ['id', 'name', 'add_time']
 
 
-class ArticleSimpleSerializer(ModelSerializer):
+class BlogArticleSimpleSerializer(ModelSerializer):
     class Meta:
-        model = Article
+        model = BlogArticle
         fields = ['url', 'id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'click_num',
                   'favor_num', 'comment_num', 'add_time', 'modify_time']
         depth = 1
 
 
-class ArticleDetailSerializer(ModelSerializer):
+class BlogArticleDetailSerializer(ModelSerializer):
     class Meta:
-        model = Article
+        model = BlogArticle
         fields = ['id', 'title', 'category', 'tags', 'user', 'brief', 'cover', 'content', 'click_num',
                   'favor_num', 'comment_num', 'add_time', 'modify_time']
         depth = 1
 
 
-class ArticleCreateSerializer(ModelSerializer):
+class BlogArticleCreateSerializer(ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
-        model = Article
+        model = BlogArticle
         fields = ['id', 'category', 'tags', 'user', 'title', 'brief', 'cover', 'content', 'add_time']

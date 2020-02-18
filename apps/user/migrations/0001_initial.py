@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 ('mobile', models.CharField(blank=True, max_length=11, null=True, unique=True, verbose_name='手机号码')),
                 ('email', models.CharField(blank=True, max_length=125, null=True, unique=True, verbose_name='邮箱')),
                 ('introduction', models.TextField(blank=True, default='该用户很懒，啥也没写...', null=True, verbose_name='简介')),
-                ('avatar', models.ImageField(blank=True, default='', null=True, upload_to='users/avatars/', verbose_name='头像')),
+                ('avatar', models.ImageField(blank=True, default='', null=True, upload_to='user/avatars/', verbose_name='头像')),
                 ('address', models.CharField(blank=True, default='', max_length=100, null=True, verbose_name='地址')),
                 ('birthday', models.DateField(blank=True, default=django.utils.timezone.now, null=True, verbose_name='生日')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups')),

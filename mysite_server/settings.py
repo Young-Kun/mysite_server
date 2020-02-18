@@ -60,8 +60,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'rest_framework',
-    'users.apps.UsersConfig',
-    'blogs.apps.BlogsConfig',
+    'user.apps.UserConfig',
+    'blog.apps.BlogConfig',
     'courses.apps.CoursesConfig',
     'operates.apps.OperatesConfig',
     'orgs.apps.OrgsConfig',
@@ -162,7 +162,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 用户模型
-AUTH_USER_MODEL = 'users.UserProfile'
+AUTH_USER_MODEL = 'user.UserProfile'
 
 # rest_framework配置项
 REST_FRAMEWORK = {

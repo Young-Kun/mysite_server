@@ -10,7 +10,7 @@ sys.path.append(pwd)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
 django.setup()
 # 导入模型，注意，要在环境配置之后再导入
-from blogs.models import BlogCategory, BlogTag, Article
+from blog.models import BlogCategory, BlogTag, Article
 from django.contrib.auth import get_user_model
 
 # 标签数据
@@ -66,7 +66,7 @@ for title in articles:
     article.comment_num = randint(10, 100)
     article.category = choice(BlogCategory.objects.all())
     article.user = choice(get_user_model().objects.all())
-    article.cover = 'blogs/articles/covers/' + str(randint(0, 5)) + '.jpg'
+    article.cover = 'blog/articles/covers/' + str(randint(0, 5)) + '.jpg'
     article.save()
     article.tags.add(choice(BlogTag.objects.all()))
     article.tags.add(choice(BlogTag.objects.all()))

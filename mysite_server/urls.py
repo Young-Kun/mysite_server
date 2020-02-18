@@ -21,18 +21,18 @@ from rest_framework_jwt.views import obtain_jwt_token
 from .settings import MEDIA_ROOT
 from rest_framework.routers import DefaultRouter
 # 引入视图
-from blogs import views as blog_views
-from users import views as user_views
+from blog import views as blog_views
+from user import views as user_views
 
 # 注册视图
-# blogs.urls
+# blog.urls
 router = DefaultRouter()
 router.register(r'blog-categories', blog_views.BlogCategoryViewSet)
 router.register(r'blog-tags', blog_views.BlogTagViewSet)
-router.register(r'articles', blog_views.ArticleListViewSet)
-router.register(r'article/detail', blog_views.ArticleRetrieveViewSet)
-router.register(r'article/create', blog_views.ArticleCreateViewSet, basename='article-create')
-# users.urls
+router.register(r'articles', blog_views.BlogArticlesViewSet)
+router.register(r'article/detail', blog_views.BlogArticleDetailViewSet)
+router.register(r'article/create', blog_views.BlogArticleCreateViewSet, basename='article-create')
+# user.urls
 router.register(r'register', user_views.UserRegisterViewSet, basename='register')
 router.register(r'verify-codes', user_views.VerifyCodeViewSet, basename='verifycode')
 
