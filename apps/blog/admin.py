@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BlogCategory, BlogTag, Article
+from .models import BlogCategory, BlogTag, BlogArticle
 
 
 @admin.register(BlogCategory)
@@ -12,6 +12,6 @@ class BlogTagAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'add_time']
 
 
-@admin.register(Article)
+@admin.register(BlogArticle)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'category', 'user', 'click_num', 'add_time', 'modify_time']
