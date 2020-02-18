@@ -28,7 +28,7 @@ class BlogArticlesViewSet(mixins.ListModelMixin, GenericViewSet):
     serializer_class = BlogArticleSimpleSerializer
     pagination_class = ArticlePagination
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = ['category', 'tags']
+    filterset_fields = ['category', 'tags', 'user']
     ordering_fields = ['add_time', 'modify_time', 'click_num', 'favor_num', 'comment_num', 'user', 'title']
 
 

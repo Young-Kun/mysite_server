@@ -10,7 +10,7 @@ sys.path.append(pwd)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite_server.settings')
 django.setup()
 # 导入模型，注意，要在环境配置之后再导入
-from blog.models import BlogCategory, BlogTag, Article
+from blog.models import BlogCategory, BlogTag, BlogArticle
 from django.contrib.auth import get_user_model
 
 # 标签数据
@@ -56,11 +56,11 @@ for ctg_name in categories_data:
         print(ctg_name, '已存在！')
 
 for title in articles:
-    if Article.objects.filter(title=title).exists():
-        article = Article.objects.filter(title=title).first()
+    if BlogArticle.objects.filter(title=title).exists():
+        article = BlogArticle.objects.filter(title=title).first()
         article.content = articles[title]
     else:
-        article = Article(title=title, content=articles[title])
+        article = BlogArticle(title=title, content=articles[title])
     article.click_num = randint(10, 100)
     article.favor_num = randint(10, 100)
     article.comment_num = randint(10, 100)
