@@ -1,4 +1,6 @@
 from rest_framework.serializers import ModelSerializer
+
+from custom.textfilter.filter import DFAFilter, keyword_path
 from .models import BlogCategory, BlogTag, BlogArticle
 from rest_framework import serializers
 
@@ -37,3 +39,10 @@ class BlogArticleCreateSerializer(ModelSerializer):
     class Meta:
         model = BlogArticle
         fields = ['id', 'category', 'tags', 'user', 'title', 'brief', 'cover', 'content', 'add_time']
+
+    def validate(self, attrs):
+        tf = DFAFilter()
+        tf.parse(keyword_path)
+        for field in ('title', 'brief', 'content'):
+            attrs[field] = tf.filter(attrs[field])
+        return attrs
