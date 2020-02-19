@@ -8,6 +8,7 @@ from rest_framework.viewsets import GenericViewSet, mixins
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 class BlogCategoryViewSet(mixins.ListModelMixin, GenericViewSet):
@@ -46,3 +47,4 @@ class BlogArticleCreateViewSet(mixins.CreateModelMixin, GenericViewSet):
     """
     serializer_class = BlogArticleCreateSerializer
     authentication_classes = [JSONWebTokenAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticated]
