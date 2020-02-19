@@ -40,9 +40,9 @@ class BlogArticleCreateSerializer(ModelSerializer):
         model = BlogArticle
         fields = ['id', 'category', 'tags', 'user', 'title', 'brief', 'cover', 'content', 'add_time']
 
-    def validate(self, attrs):
-        tf = DFAFilter()
-        tf.parse(keyword_path)
-        for field in ('title', 'brief', 'content'):
-            attrs[field] = tf.filter(attrs[field])
-        return attrs
+    # def validate(self, attrs):
+    #     tf = DFAFilter()
+    #     tf.parse(keyword_path)
+    #     for field in ('title', 'brief', 'content'):
+    #         attrs[field] = tf.filter(attrs[field])
+    #     return attrs
