@@ -19,7 +19,7 @@ tags_data = ['python', 'java', 'nodejs', 'html', 'css', 'c++', 'nginx']
 categories_data = ['Web开发', '人工智能', '财税金融', '动物世界', '道德观察']
 # 文章
 articles = {
-    'python爬虫实践': 'Python爬虫是最流行的',
+    'python爬虫实践': 'Python爬虫是最流行的dsafsafafdas',
     'django开发实战': 'Django是一个开放源代码的Web应用框架，由Python写成',
     '马是怎么睡觉的': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
     '文章1': '马是站着睡觉的。这是从它们的祖先——野马沿袭下来的习性。',
