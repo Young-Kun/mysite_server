@@ -42,9 +42,9 @@ urlpatterns = [
     # 媒体文件
     path('media/<path:path>', serve, {'document_root': MEDIA_ROOT}),
     # api登录视图
-    path('', include('rest_framework.urls')),
+    path('api/', include('rest_framework.urls')),
     # api路由
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     # JWT 认证
-    path('jwt-token-auth/', obtain_jwt_token),
+    path('api/jwt-token-auth/', obtain_jwt_token),
 ]

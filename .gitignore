@@ -1,3 +1,5 @@
 .idea
 db.sqlite3
 selfconfig.py
+all_static_files
+static/front
