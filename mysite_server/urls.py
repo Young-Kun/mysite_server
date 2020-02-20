@@ -23,6 +23,7 @@ from rest_framework.routers import DefaultRouter
 # 引入视图
 from blog import views as blog_views
 from user import views as user_views
+from . import views
 
 # 注册视图
 # blog.urls
@@ -47,4 +48,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     # JWT 认证
     path('api/jwt-token-auth/', obtain_jwt_token),
+    # 首页
+    path('', views.index, name='index'),
 ]
