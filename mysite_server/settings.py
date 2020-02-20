@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = selfconfig.key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # # 测试邮箱配置
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
