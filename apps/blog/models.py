@@ -6,7 +6,7 @@ class BlogCategory(models.Model):
     """
     类别
     """
-    name = models.CharField(max_length=30, help_text='类别名', editable=False, verbose_name='类别名')
+    name = models.CharField(max_length=30, help_text='类别名', verbose_name='类别名')
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
@@ -22,7 +22,7 @@ class BlogTag(models.Model):
     """
     标签
     """
-    name = models.CharField(max_length=25, editable=False, verbose_name='标签名')
+    name = models.CharField(max_length=25, verbose_name='标签名')
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
